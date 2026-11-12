@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeynep'e küçük bir sürpriz ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:28px 14px;display:grid;place-items:center;
+font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#71364b;
+background:radial-gradient(circle at top,#fff5f8,#ffdce8 55%,#ffc4d8)}
+.card{width:min(94vw,560px);padding:34px 25px;text-align:center;background:#ffffffdf;
+border:1px solid #fff;border-radius:28px;box-shadow:0 20px 60px #a9446840;position:relative;z-index:2}
+.heart{font-size:45px;animation:pulse 1.4s infinite}
+h1{font-size:clamp(27px,6vw,38px);margin:12px 0;color:#c04470}
+.intro{font-size:17px;line-height:1.7;margin:12px auto 24px;max-width:430px}
+.letter{background:#fff7fa;border:1px solid #f8d4e1;border-radius:20px;padding:22px 20px;text-align:left;line-height:1.85;font-size:16px;white-space:pre-line}
+.letter strong{color:#b63d6d}
+.question{font-weight:800;font-size:clamp(23px,5vw,29px);color:#a83260;margin:28px 0 16px}
+button{border:0;border-radius:999px;padding:13px 26px;font-size:16px;font-weight:750;cursor:pointer;margin:7px;transition:transform .2s,background .2s}
+#yes{background:#d94f82;color:white;box-shadow:0 7px 18px #d94f8250}
+#yes:hover{transform:translateY(-3px) scale(1.04)}
+#no{background:#f8e8ee;color:#8d5368}
+#result{min-height:58px;margin-top:18px;font-weight:700;line-height:1.6;color:#bd3e70}
+.small{font-size:13px;color:#a47787;margin-top:22px}
+.float{position:fixed;bottom:-30px;font-size:22px;animation:rise 6s linear forwards;pointer-events:none;z-index:1}
+@keyframes pulse{50%{transform:scale(1.14)}}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="heart">💗</div>
+  <h1>Zeynep, sana küçük bir şey hazırladım...</h1>
+  <p class="intro">Bunu hazırlarken yüzünde küçük bir tebessüm oluşmasını istedim. Çünkü seninle ilgili güzel şeyleri söylemek istiyorum. 🌷</p>
+
+  <section class="letter">
+    <strong>Sevgili Zeynep, 💗</strong>
+
+    Aslında sana ne yazacağımı biraz düşündüm. Çünkü bazen insan hissettiklerini anlatmakta zorlanabiliyor.
+
+    Seninle konuşmak, seni tanımak ve gün içinde senden bir mesaj görmek beni gerçekten mutlu ediyor.
+
+    Belki her zaman söyleyemiyorum ama sen benim için özelsin. Seninle daha çok anı biriktirmek, birlikte gülmek ve güzel şeyler yaşamak istiyorum.
+
+    Biraz utanarak da olsa sana bir soru sormak istiyorum...
+
+    <strong>Bu sorunun cevabını merakla bekliyorum. 🥺</strong>
+  </section>
+
+  <div class="question">Benim olur musun? ❤️</div>
+  <button id="yes" onclick="answerYes()">Evet 💖</button>
+  <button id="no" onclick="turnIntoYes()">Hayır 🙈</button>
+  <div id="result" aria-live="polite"></div>
+  <div class="small">Sadece sana özel, sevgiyle hazırlandı. 🌸</div>
+</main>
+<script>
+function answerYes(){
+  document.getElementById('result').textContent='Gerçekten mi? 🥹 O zaman sana kocaman sarılmak istiyorum! ❤️';
+  for(let i=0;i<32;i++) setTimeout(makeHeart,i*75);
+}
+function turnIntoYes(){
+  const no=document.getElementById('no');
+  no.textContent='Evet 💖';
+  no.id='yes';
+  no.onclick=answerYes;
+  document.getElementById('result').textContent='Bir daha düşün bakalım... 🙈💗';
+}
+function makeHeart(){
+  const h=document.createElement('div');h.className='float';
+  h.textContent=['💗','💕','💖','🌸'][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=(4+Math.random()*3)+'s';
+  document.body.appendChild(h);setTimeout(()=>h.remove(),7500);
+}
+setInterval(()=>{if(Math.random()>.45)makeHeart()},1800);
+</script>
+</body>
+</html>
